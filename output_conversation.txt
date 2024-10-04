@@ -1,6 +1,0 @@
-SPEAKER_00:  Ceci est un test pour Émilien Biré.
-SPEAKER_00:  Tiens, Émilien, on va aussi essayer double speaker.
-SPEAKER_00:  Là c'est Léo qui parle.
-SPEAKER_01:  Là, je lui réponds avec ma voix.
-SPEAKER_00:  Là maintenant c'est de nouveau Léo.
-SPEAKER_01:  Non mais je suis pas d'accord avec ça.
