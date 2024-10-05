@@ -12,7 +12,7 @@ from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from tqdm import tqdm
 from utils import *
 
-def transcribe_audio(input_file_path, output_file_path, processor, num_speakers, lenguage):
+def transcribe_audio(input_file_path, output_file_path, processor, num_speakers, language):
     audio_path = convert_audio_to_wav_ffmpeg(input_file_path)
 
     # Load the diarization pipeline
@@ -44,7 +44,7 @@ def transcribe_audio(input_file_path, output_file_path, processor, num_speakers,
         audio_segment = audio[int(start_time * sample_rate):int(end_time * sample_rate)]
 
         # Convert to the format expected by the processor
-        inputs = processor(audio_segment, return_tensors="pt", sampling_rate=sample_rate, language=lenguage)
+        inputs = processor(audio_segment, return_tensors="pt", sampling_rate=sample_rate, language=language)
         inputs = {k: v.to(device) for k, v in inputs.items()}
 
         # Perform transcription
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     args = parser.parse_args()
     audio_files = get_audio_files(args.paths)
     num_speakers = args.num_speakers
-    lenguage = args.language
+    language = args.language
     model = args.model
     
 
@@ -130,4 +130,4 @@ if __name__ == "__main__":
                                         os.path.splitext(os.path.basename(input_file_path))[0] + "_transcript.txt")
         print(f"====Transcribing conversation {os.path.basename(input_file_path)} ....====")
         for segment in tqdm(segments) :
-            transcribe_audio(segment, output_file_path, processor, num_speakers, lenguage)
+            transcribe_audio(segment, output_file_path, processor, num_speakers, language)
