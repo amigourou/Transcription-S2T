@@ -5,7 +5,7 @@ Small tool to transcript conversations.
 ## Setup
 
 ```
-git clone <https://github.com/amigourou/Transcription-S2T.git>
+git clone https://github.com/amigourou/Transcription-S2T.git
 cd SPEECH2TEXT
 ```
 
