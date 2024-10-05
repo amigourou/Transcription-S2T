@@ -6,7 +6,7 @@ Small tool to transcript conversations.
 
 ```
 git clone https://github.com/amigourou/Transcription-S2T.git
-cd SPEECH2TEXT
+cd Transcription-S2T
 ```
 
 create a python venv or a conda env, activate it and install the required dependencies
