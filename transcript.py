@@ -12,6 +12,9 @@ from transformers import WhisperProcessor, WhisperForConditionalGeneration
 from tqdm import tqdm
 from utils import *
 
+HUGGING_FACE_TOKEN = ""
+DEFAULT_PATH = r"."
+
 def transcribe_audio(input_file_path, output_file_path, processor, num_speakers, language):
     audio_path = convert_audio_to_wav_ffmpeg(input_file_path)
 
@@ -78,9 +81,9 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Transcribe audio files to text.")
     parser.add_argument(
-        'paths', 
+        '--paths', 
         nargs='+',
-        default=r".",
+        default=DEFAULT_PATH,
         help="File paths or directories containing audio files to transcribe.")
     
     parser.add_argument(
@@ -107,9 +110,7 @@ if __name__ == "__main__":
     num_speakers = args.num_speakers
     language = args.language
     model = args.model
-    
 
-    HUGGING_FACE_TOKEN= "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"
 
     model_types = {
         "tiny":"openai/whisper-tiny",
@@ -125,6 +126,11 @@ if __name__ == "__main__":
     model = WhisperForConditionalGeneration.from_pretrained(model_name)
 
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    if device == "cuda":
+        print("GPU available you lucky dog...")
+    else:
+        print("GPU not found, running on CPU (go grab a coffee)...")
+
     model.to(device)
 
     for input_file_path in audio_files:
