@@ -84,20 +84,23 @@ if __name__ == "__main__":
         help="File paths or directories containing audio files to transcribe.")
     
     parser.add_argument(
-        'model', 
-        nargs='+',
-        default=r"medium",
-        help="Model type (chose from tiny, small, medium, large)")
-    
+        '--model',  # change to named argument
+        default="medium",  # set default value
+        help="Model type (choose from tiny, small, medium, large)"
+    )
+
     parser.add_argument(
-        'language', 
-        default=r"fr",
-        help="The prefered language")
-    
+        '--language',  # change to named argument
+        default="fr",  # set default value
+        help="The preferred language"
+    )
+
     parser.add_argument(
-        'num_speakers', 
-        default=2,
-        help="The number of speakers")
+        '--num_speakers',  # change to named argument
+        type=int,  # ensure it's treated as an integer
+        default=2,  # set default value
+        help="The number of speakers"
+    )
     
     args = parser.parse_args()
     audio_files = get_audio_files(args.paths)
@@ -106,7 +109,7 @@ if __name__ == "__main__":
     model = args.model
     
 
-    HUGGING_FACE_TOKEN= "" #"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"
+    HUGGING_FACE_TOKEN= "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"
 
     model_types = {
         "tiny":"openai/whisper-tiny",
@@ -114,7 +117,7 @@ if __name__ == "__main__":
         "medium":"openai/whisper-medium",
         "large":"openai/whisper-large-v3",
     }
-
+    print(model, model_types)
     assert(model in model_types), f"The model type is not supporte, chose from {model_types.keys()}"
     # Load your Whisper model and processor
     model_name = model_types[model]
