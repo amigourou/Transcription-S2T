@@ -26,20 +26,15 @@ Accept the conditions of use of the several pages : \\
 <https://huggingface.co/pyannote/speaker-diarization-3.1> \\
 <https://huggingface.co/pyannote/segmentation-3.0>
 
-Add your token in <transcript.py> in the brackets line 112:
+Add your token in <transcript.py> in the brackets line 15:
 ```
 HUGGING_FACE_TOKEN= "YOUR_TOKEN_HERE"
 ```
 
-To Add a default path, modify line 83 in transcript.py:
+To Add a default path, modify line 16 in transcript.py:
 
 ```
-    parser = argparse.ArgumentParser(description="Transcribe audio files to text.")
-    parser.add_argument(
-        '--paths', 
-        nargs='+',
-        default=r"YOUR_DEFAULT_PATH_HERE",
-        help="File paths or directories containing audio files to transcribe.")
+DEFAULT_PATH = r"YOUR_DEFAULT_PATH_HERE"
 ```
 
 ## Run
