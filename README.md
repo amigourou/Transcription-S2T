@@ -16,6 +16,8 @@ source env_transcription/bin/activate
 pip install -r requirements.txt
 ```
 
+Then install torch separatly here <https://pytorch.org/get-started/locally>
+
 Install ffmpeg from the website <https://ffmpeg.org/download.html#build-windows>, unzip the build and make sure to add the /bin folder into your PATH environment variable. Check the installation :
 ```
 ffmpeg -version
